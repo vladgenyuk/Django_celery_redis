@@ -1,0 +1,43 @@
+>docker images
+>docker build -t HA3BA .
+#sozdatb Dockerfile
+>docker run --rm --name web -p 8080:8080 web-hello
+>docker ps -a -q
+>docker run --rm --name web -p 8080:8080 -v D:\docker-tutor\resources:/usr/src/app/resources web-hello
+>docker volume ls
+>docker volume create web
+>docker run --rm --name web -p 8080:8080 -v web:/usr/src/app/resources web-hello
+>docker exec -it 1246ca110cbd /bin/sh
+
+
+
+
+>docker hash :ac74e387589f9b9ff43d4f2aebb27dbb46d2af9a6c02c9065c423ee691c83f14
+>docker pull redis
+>docker run -d -p 6379:6379 --name redis1 redis
+>docker ps
+>docker logs redis1
+>docker exec -it redis1 sh
+
+>celery -A app worker --pool=solo -l info
+>celery -A app beat -l info
+>celery -A app flower  --address=127.0.0.1 --port=5566
+
+
+
+>>redis
+>SET Key
+>GET Key
+>DEL Key, Key1
+>EXPIRE timer 30
+>TTL timer
+>KEYS *
+
+
+celery:
+   depends_on:
+     - rabbitmq # старт после старта контейнера rabbitmq
+   command: sh -c './wait-for host:5432 -- cmd' # ожидаем  --- запуск контейнера после другого
+
+!!!!!!!!!!!!!!!!1
+https://ru.stackoverflow.com/questions/768200/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D0%BE%D0%B2-%D0%B2-docker-compose-yml?
